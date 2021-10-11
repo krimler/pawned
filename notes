@@ -3,3 +3,32 @@ cloudflare link https://downloads.pwnedpasswords.com/passwords/pwned-passwords-s
 
 sudo apt-get update
 apt-get install p7zip
+
+
+p7zip -d pwned-passwords-sha1-ordered-by-count-v7.7z
+
+-------
+Linux mount things:
+Volume Configuration
+Volume scheduled for creation.
+
+To get started with a new volume, you'll want to create a filesystem on it:
+
+Create a Filesystem
+mkfs.ext4 "/dev/disk/by-id/scsi-0Linode_Volume_foodisk"
+
+Once the volume has a filesystem, you can create a mountpoint for it:
+
+Create a Mountpoint
+mkdir "/mnt/foodisk"
+
+Then you can mount the new volume:
+
+Mount Volume
+mount "/dev/disk/by-id/scsi-0Linode_Volume_foodisk" "/mnt/foodisk"
+
+If you want the volume to automatically mount every time your Linode boots, you'll want to add a line like the following to your /etc/fstab file:
+
+Mount every time your Linode boots
+/dev/disk/by-id/scsi-0Linode_Volume_foodisk /mnt/foodisk ext4 defaults,noatime,nofail 0 2
+===========
